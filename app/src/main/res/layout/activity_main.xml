@@ -1,18 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/download"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/welcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="80dp"
+            android:gravity="center"
+            android:padding="50dp"
+            android:textColor="#ffffff"
+            android:text="Welcome"
+            android:textSize="50dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textColor="#ffffff"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:textColorLink="#ffffff"
+            android:outlineAmbientShadowColor="#ffffff"
+            android:outlineSpotShadowColor="#ffffff"
+            android:textColorHighlight="#ffffff"
+            android:shadowColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:inputType="textPersonName"
+            android:hint="Login" />
+
+        <EditText
+            android:id="@+id/pass"
+            android:textColor="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50dp"
+            android:textColorHint="#ffffff"
+            android:paddingRight="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:hint="Password"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/login"
+            android:textColor="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:textStyle="bold"
+            android:text="Sign In" />
+
+        <TextView
+            android:id="@+id/joinActivity_main_activity_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:textSize="15dp"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:text="Join now" />
+
+    </LinearLayout>
+</RelativeLayout>

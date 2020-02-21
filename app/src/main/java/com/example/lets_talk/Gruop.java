@@ -1,6 +1,7 @@
 package com.example.lets_talk;
 
 public class Gruop {
+    private String name;
     private String language;
     private int level;
     private int id;
@@ -8,11 +9,20 @@ public class Gruop {
     public Gruop(){
 
     }
-    public Gruop(String language, int level, int id, int size) {
+    public Gruop(String language, int level, int id, int size,String name) {
         this.language = language;
         this.level = level;
         this.id = id;
         this.size = size;
+        this.name=name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLanguage() {

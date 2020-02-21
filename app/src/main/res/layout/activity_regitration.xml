@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".loginActivity">
+    tools:context=".RegitrationActivity">
 
 
     <LinearLayout
@@ -23,9 +23,21 @@
             android:textStyle="bold"
             android:gravity="center"
             android:layout_marginTop="25dp"/>
-
         <EditText
-            android:id="@+id/firstName"
+            android:id="@+id/email_registration_edt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textColor="#ffffff"
+            android:layout_marginTop="10dp"
+            android:textColorHint="#ffffff"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:textSize="20dp"
+            android:hint="email"
+            android:inputType="textEmailAddress" />
+        <EditText
+            android:id="@+id/firstName_edittext_registration_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
@@ -37,7 +49,7 @@
             android:hint="Your First Name" />
 
         <EditText
-            android:id="@+id/lastName"
+            android:id="@+id/lastName_edittext_registration_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
@@ -50,7 +62,7 @@
             android:hint="Your Last Name" />
 
         <EditText
-            android:id="@+id/age"
+            android:id="@+id/location_edit_text_registration_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#ffffff"
@@ -59,22 +71,38 @@
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
             android:textSize="20dp"
-            android:hint="Your Age" />
+            android:hint="Your location" />
 
 
-        <Button
-            android:id="@+id/next"
-            android:textColor="#ffffff"
+        <EditText
+            android:id="@+id/editText_password_activity_regitration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="50dp"
-            android:paddingRight="50dp"
+            android:layout_centerVertical="true"
+            android:textColor="#ffffff"
+            android:layout_marginTop="10dp"
+            android:textColorHint="#ffffff"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:textSize="20dp"
+            android:hint="password"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/create_btn_activity_regitration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="50dp"
-            android:layout_marginLeft="50dp"
-            android:background = "@drawable/ic_roundedbutton"
-            android:textStyle="bold"
-            android:text="Continue" />
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="Continue"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+
 
 
     </LinearLayout>
