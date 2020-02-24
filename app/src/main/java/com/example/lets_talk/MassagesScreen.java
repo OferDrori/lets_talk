@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,24 +28,30 @@ public class MassagesScreen extends AppCompatActivity {
     MyAdapter adapter;
     private MySharedPreferences msp;
     private User user;
+    private Button send;
+    private EditText massage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_massages_screen);
         listView = findViewById(R.id.listView_massages);
-        welcome=findViewById(R.id.welcome_txt_massages_screen);
+        welcome = findViewById(R.id.welcome_txt_massages_screen);
+        send = findViewById(R.id.send_btn_massagesScreen);
+        massage = findViewById(R.id.massage_edit_text);
         arrayList.add(new Message(System.currentTimeMillis(), "Hi Tomer4!", 11, 22, 1, "Yosi"));
         arrayList.add(new Message(System.currentTimeMillis(), "Hi Yosi!", 11, 22, 1, "Tomer"));
         adapter = new MyAdapter(this, arrayList);
         listView.setAdapter(adapter);
-        msp=new MySharedPreferences(this);
-        profile=findViewById(R.id.gotoProfile_imageView_massagesScreen);
+        msp = new MySharedPreferences(this);
+        profile = findViewById(R.id.gotoProfile_imageView_massagesScreen);
         profile.setOnClickListener(goToProfile);
+        send.setOnClickListener(sendMassage);
         Gson gson = new Gson();
-         user= gson.fromJson(msp.getString(KEY_USER_PROFILE, ""), new TypeToken<User>() {
+        user = gson.fromJson(msp.getString(KEY_USER_PROFILE, ""), new TypeToken<User>() {
         }.getType());
-        welcome.setText("welcome  "+user.getFirstName());
-         Log.d("ggg",user.getEmail());
+        welcome.setText("welcome  " + user.getFirstName());
+        Log.d("ggg", user.getEmail());
 
 
     }
@@ -51,9 +59,20 @@ public class MassagesScreen extends AppCompatActivity {
     View.OnClickListener goToProfile = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent next = new Intent(getApplicationContext(),Profile.class);
+            Intent next = new Intent(getApplicationContext(), Profile.class);
             startActivity(next);
             finish();
         }
     };
-    }
+
+    View.OnClickListener sendMassage = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(!massage.getText().toString().equals("")) {
+                arrayList.add(new Message(System.currentTimeMillis(), massage.getText().toString(),user.getId(), 22, 1, user.getFirstName()));
+                listView.setAdapter(adapter);
+            }
+
+        }
+    };
+}

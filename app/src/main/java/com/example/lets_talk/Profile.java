@@ -26,6 +26,8 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        msp=new MySharedPreferences(this);
+
         fullName=findViewById(R.id.fullName_textView_profile);
         location=findViewById(R.id.location_textView_profile);
         score=findViewById(R.id.score_textView_profile);
@@ -34,12 +36,14 @@ public class Profile extends AppCompatActivity {
         back.setOnClickListener(goToMassagesScreen);
 
         Gson gson = new Gson();
-        user= gson.fromJson(msp.getString(KEY_USER_PROFILE, ""), new TypeToken<User>() {
-        }.getType());
+         user= gson.fromJson(msp.getString(KEY_USER_PROFILE, ""), new TypeToken<User>() {
+       }.getType());
+         Log.d("pppt",user.toString());
         fullName.setText("name:"+user.getFirstName()+" "+user.getLastName());
         location.setText("location: "+user.getLocation());
         score.setText("score: "+user.getScore());
         description.setText(user.getDescription());
+
 
 
     }

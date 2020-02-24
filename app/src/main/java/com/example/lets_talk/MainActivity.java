@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
@@ -115,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
             Log.d("pttt", "check1");
             if (checkUser() == true) {
+
                 Context context = getApplicationContext();
                 CharSequence text = "good!";
                 int duration = Toast.LENGTH_SHORT;
@@ -148,7 +150,8 @@ public class MainActivity extends AppCompatActivity {
             Log.d("pttt", temp.get(i).getPassword());
             Log.d("pttt", userName.getText().toString());
             if (temp.get(i).getEmail().equals(userName.getText().toString())&&temp.get(i).getPassword().equals(pass.getText().toString())) {
-                Log.d("pttt", "true");
+                Gson gson = new Gson();
+                msp.putString(KEY_USER_PROFILE, gson.toJson(temp.get(i)));
                 return true;
             }
 

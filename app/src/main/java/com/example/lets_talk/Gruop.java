@@ -1,20 +1,23 @@
 package com.example.lets_talk;
 
+import java.util.ArrayList;
+
 public class Gruop {
     private String name;
-    private String language;
-    private int level;
-    private int id;
     private int size;
-    public Gruop(){
+    private ArrayList<Message> massages ;
+    public Gruop() {
 
     }
-    public Gruop(String language, int level, int id, int size,String name) {
-        this.language = language;
-        this.level = level;
-        this.id = id;
+    public Gruop(String name, int size, ArrayList<Message> massages) {
+        this.name = name;
         this.size = size;
-        this.name=name;
+        this.massages = massages;
+    }
+    public Gruop(String name, int size) {
+        this.name = name;
+        this.size = size;
+        this.massages =  new ArrayList<>();
     }
 
     public String getName() {
@@ -24,31 +27,6 @@ public class Gruop {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getSize() {
         return size;
     }
@@ -56,4 +34,14 @@ public class Gruop {
     public void setSize(int size) {
         this.size = size;
     }
+
+    public ArrayList<Message> getMassages() {
+        return massages;
+    }
+
+    public void setMassages(ArrayList<Message> massages) {
+        this.massages = massages;
+    }
+
+
 }
