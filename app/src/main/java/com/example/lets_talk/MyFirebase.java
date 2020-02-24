@@ -16,7 +16,7 @@ class MyFirebase {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("message");
 
-        myRef.child("Users").child("Israel").child("Tel-Aviv").addValueEventListener(new ValueEventListener() {
+        myRef.child("Users").child("Israel").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if (dataSnapshot == null)

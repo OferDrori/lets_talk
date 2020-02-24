@@ -30,52 +30,39 @@
         android:background="@drawable/ic_back"
         android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/student"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginRight="15dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/ic_settings"
-        android:paddingLeft="250dp"
-        android:textSize="30sp"
-        android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/holo_blue_bright"
             android:orientation="horizontal">
-
             <ImageView
                 android:id="@+id/flag_img_massages_screen"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/france_flag">
             </ImageView>
-
             <TextView
                 android:id="@+id/group_name_text_view_massages_screen"
                 android:text="name  group"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:layout_marginLeft="100dp"
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="35dp">
             </TextView>
 
-
-
+            <ImageView
+                android:id="@+id/gotoProfile_imageView_massagesScreen"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/ic_settings"
+                 />
 
         </LinearLayout>
     <LinearLayout
@@ -87,9 +74,12 @@
 
 
         <ListView
+            android:id="@+id/listView_massages"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="100dp" />
+
+
 
 
     </LinearLayout>
@@ -97,8 +87,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="600dp">
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="500dp">
 
     <EditText
         android:id="@+id/massage_edit_text"
@@ -107,6 +97,11 @@
         android:hint="Say Something"
         android:textSize="20dp"
         android:paddingTop="10dp"></EditText>
+        <Button
+            android:id="@+id/send_btn_massagesScreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="send" />
     </LinearLayout>
 
 </RelativeLayout>
