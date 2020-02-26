@@ -2,33 +2,24 @@ package com.example.lets_talk;
 
 import java.util.ArrayList;
 
-public class languageGroups {
-    private String name;
+public class LanguageGroups {
     private String language;
     private int level;
     private int id;
     private int size;
     private ArrayList<Gruop> gruops;
 
-    public languageGroups(){
+    public LanguageGroups(){
 
     }
 
-    public languageGroups(String name, String language, int level, int id, int size, ArrayList<Gruop> gruops) {
-        this.name = name;
+    public LanguageGroups( String language, int level, int id, int size, ArrayList<Gruop> gruops) {
+
         this.language = language;
         this.level = level;
         this.id = id;
         this.size = size;
         this.gruops = gruops;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getLanguage() {

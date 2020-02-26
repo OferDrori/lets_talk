@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
+import java.security.acl.Group;
 import java.util.ArrayList;
 
 import static com.example.lets_talk.Keys.KEY_USER_PROFILE;
@@ -69,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
 
         User user2 = new User("Tomer", "choen", "tomer@gmail.com", "Petah-Tikva", 3, "1122","student of math");
         myRef.child("Users").child("Israel").child("" + user2.getId()).setValue(user2);
-
         Message message = new Message();
 
         message = new Message()
@@ -78,6 +78,13 @@ public class MainActivity extends AppCompatActivity {
                 .setSender(user.getId())
                 .setReceiver(user2.getId())
                 .setContent("Hi Tomer4!");
+        ArrayList<Message> massagestemp=new ArrayList<>();
+        massagestemp.add(message);
+        ArrayList<Gruop> Gruopstemp=new ArrayList<>();
+        Gruop gruop=new Gruop("the best",4, massagestemp);
+        Gruopstemp.add(gruop);
+        LanguageGroups lantemp=new LanguageGroups( "english", 1, 11, 4, Gruopstemp);
+        myRef.child("language").setValue(lantemp);
 
 
         myRef.child("Chats").child(user.getId() + "-" + user2.getId()).push().setValue(message);
