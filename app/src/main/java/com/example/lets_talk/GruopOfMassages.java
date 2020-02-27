@@ -2,19 +2,19 @@ package com.example.lets_talk;
 
 import java.util.ArrayList;
 
-public class Gruop {
+public class GruopOfMassages {
     private String name;
     private int size;
     private ArrayList<Message> massages ;
-    public Gruop() {
+    public GruopOfMassages() {
 
     }
-    public Gruop(String name, int size, ArrayList<Message> massages) {
+    public GruopOfMassages(String name, int size, ArrayList<Message> massages) {
         this.name = name;
         this.size = size;
         this.massages = massages;
     }
-    public Gruop(String name, int size) {
+    public GruopOfMassages(String name, int size) {
         this.name = name;
         this.size = size;
         this.massages =  new ArrayList<>();
@@ -27,6 +27,7 @@ public class Gruop {
     public void setName(String name) {
         this.name = name;
     }
+
     public int getSize() {
         return size;
     }
@@ -42,6 +43,4 @@ public class Gruop {
     public void setMassages(ArrayList<Message> massages) {
         this.massages = massages;
     }
-
-
 }

@@ -16,14 +16,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.gson.Gson;
 
-import java.security.acl.Group;
 import java.util.ArrayList;
 
+import static com.example.lets_talk.Keys.KEY_LANGUAGE_ALL;
 import static com.example.lets_talk.Keys.KEY_USER_PROFILE;
 
 public class MainActivity extends AppCompatActivity {
     ArrayList<User> users = new ArrayList<>();
     ArrayList<User> temp = new ArrayList<>();
+    ArrayList<LanguageGroups> languageGroupsw=new ArrayList<>();
+    ArrayList<LanguageGroups> languageGroupstemp = new ArrayList<>();
+
     private TextView register;
     private EditText pass;
     private EditText userName;
@@ -34,8 +37,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
-        Log.d("pttt", "A - Number of users: " + users.size());
+        DatabaseReference myRef = database.getReference();
+       // Log.d("pttt", "A - Number of users: " + users.size());
+        Log.d("pttt", "A - Number of languageGroups: " + languageGroupsw.size());
         pass = findViewById(R.id.pass_main_editText);
         userName = findViewById(R.id.name_main_editText);
         register = findViewById(R.id.joinActivity_main_activity_text_view);
@@ -48,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
         MyFirebase.getUsers(new CallBack_UsersReady() {
             @Override
             public void usersReady(ArrayList<User> users) {
-                refreshList(users);
-                Log.d("pttt", "C - Number of users: " + users.size());
+                refreshListUsers(users);
+              //  Log.d("pttt", "C - Number of users: " + users.size());
 
 
             }
@@ -60,8 +64,22 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+        MyFirebase.getLanguageTalk(new CallBack_LanguageReady() {
+            @Override
+            public void languadeReady(ArrayList<LanguageGroups> languageGroups) {
+                refreshListOflanguage(languageGroups);
+//                Log.d("pttt", "C - Number of languageGroups: " + languageGroups.size());
 
-        Log.d("pttt", "B - Number of users: " + users.size());
+            }
+
+            @Override
+            public void error() {
+
+            }
+        });
+//
+//        Log.d("pttt", "B - Number of users: " + users.size());
+        Log.d("pttt", "B - Number of users: " + languageGroupsw.size());
 
         User temp = new User();
         User user = new User("Gadi", "choen", "gadi", "Petah-Tikva", 2, "112233","student");
@@ -80,27 +98,45 @@ public class MainActivity extends AppCompatActivity {
                 .setContent("Hi Tomer4!");
         ArrayList<Message> massagestemp=new ArrayList<>();
         massagestemp.add(message);
-        ArrayList<Gruop> Gruopstemp=new ArrayList<>();
-        Gruop gruop=new Gruop("the best",4, massagestemp);
-        Gruopstemp.add(gruop);
-        LanguageGroups lantemp=new LanguageGroups( "english", 1, 11, 4, Gruopstemp);
-        myRef.child("language").setValue(lantemp);
-
+        massagestemp.add(message);
+        massagestemp.add(message);
+        massagestemp.add(message);
+        ArrayList<GruopOfMassages> gruopstemp =new ArrayList<>();
+        GruopOfMassages gruopOfMassages =new GruopOfMassages("the best",4, massagestemp);
+        gruopstemp.add(gruopOfMassages);
+        gruopstemp.add(gruopOfMassages);
+        gruopstemp.add(gruopOfMassages);
+        gruopstemp.add(gruopOfMassages);
+        LanguageGroups lantemp=new LanguageGroups( "ENGLISH", 1, 11, 4, gruopstemp);
+        myRef.child("language").child("ENGLISH").setValue(lantemp);
+        myRef.child("language").child("HEBREW").setValue(lantemp);
 
         myRef.child("Chats").child(user.getId() + "-" + user2.getId()).push().setValue(message);
 
     }
 
-    private void refreshList(ArrayList<User> users) {
+    private void refreshListUsers(ArrayList<User> users) {
 
         for (User var : users) {
-            Log.d("pttt", "B - Number of users: " + var.toString());
-            Log.d("pttt", "B - Number of users: " + var.getEmail());
-            Log.d("pttt", "B - Number of users: " + var.getPassword());
+//            Log.d("pttt", "B - Number of users: " + var.toString());
+//            Log.d("pttt", "B - Number of users: " + var.getEmail());
+//            Log.d("pttt", "B - Number of users: " + var.getPassword());
             temp.add(var);
 
         }
         // TODO: 12/01/2020 do refresh List
+    }
+    private void refreshListOflanguage(ArrayList<LanguageGroups> languageGroups) {
+        languageGroupstemp.clear();
+        for (LanguageGroups var : languageGroups) {
+            languageGroupstemp.add(var);
+            Log.d("pttt", var.getLanguage());
+            Log.d("pttt", var.getGruopOfMassages().get(0).getName());
+
+        }
+        Gson gson=new Gson();
+        msp.putString(KEY_LANGUAGE_ALL,gson.toJson(languageGroupstemp));
+
     }
 
 
@@ -140,6 +176,8 @@ public class MainActivity extends AppCompatActivity {
                 toast.show();
 
             }
+            Intent intent = new Intent(MainActivity.this, ChooseLanguage.class);
+            startActivity(intent);
 
         }
     };
@@ -147,15 +185,15 @@ public class MainActivity extends AppCompatActivity {
     boolean checkUser() {
 
         for (User var : temp) {
-            Log.d("pttt", "B -s: " + var.toString());
-            Log.d("pttt", "B -: " + var.getEmail());
-            Log.d("pttt", "B - : " + var.getPassword());
+      //      Log.d("pttt", "B -s: " + var.toString());
+        //    Log.d("pttt", "B -: " + var.getEmail());
+         //   Log.d("pttt", "B - : " + var.getPassword());
         }
         Log.d("pttt", "check");
         for (int i = 0; i < temp.size(); i++) {
-            Log.d("pttt", temp.get(i).getEmail());
-            Log.d("pttt", temp.get(i).getPassword());
-            Log.d("pttt", userName.getText().toString());
+         //   Log.d("pttt", temp.get(i).getEmail());
+          //  Log.d("pttt", temp.get(i).getPassword());
+          //  Log.d("pttt", userName.getText().toString());
             if (temp.get(i).getEmail().equals(userName.getText().toString())&&temp.get(i).getPassword().equals(pass.getText().toString())) {
                 Gson gson = new Gson();
                 msp.putString(KEY_USER_PROFILE, gson.toJson(temp.get(i)));

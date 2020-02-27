@@ -7,19 +7,19 @@ public class LanguageGroups {
     private int level;
     private int id;
     private int size;
-    private ArrayList<Gruop> gruops;
+    private ArrayList<GruopOfMassages> gruopOfMassages;
 
     public LanguageGroups(){
 
     }
 
-    public LanguageGroups( String language, int level, int id, int size, ArrayList<Gruop> gruops) {
+    public LanguageGroups( String language, int level, int id, int size, ArrayList<GruopOfMassages> gruopOfMassages) {
 
         this.language = language;
         this.level = level;
         this.id = id;
         this.size = size;
-        this.gruops = gruops;
+        this.gruopOfMassages = gruopOfMassages;
     }
 
     public String getLanguage() {
@@ -54,11 +54,11 @@ public class LanguageGroups {
         this.size = size;
     }
 
-    public ArrayList<Gruop> getGruops() {
-        return gruops;
+    public ArrayList<GruopOfMassages> getGruopOfMassages() {
+        return gruopOfMassages;
     }
 
-    public void setGruops(ArrayList<Gruop> gruops) {
-        this.gruops = gruops;
+    public void setGruopOfMassages(ArrayList<GruopOfMassages> gruopOfMassages) {
+        this.gruopOfMassages = gruopOfMassages;
     }
 }
