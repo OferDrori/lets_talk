@@ -33,7 +33,7 @@ public class RegitrationActivity extends AppCompatActivity {
     private Gson gson;
     private static long idCounter = 0;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("message");
+    DatabaseReference myRef = database.getReference();
     private MySharedPreferences msp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +57,7 @@ public class RegitrationActivity extends AppCompatActivity {
             myRef.child("Users").child("Israel").child("" + user.getId()).setValue(user);
             Gson gson = new Gson();
             msp.putString(KEY_USER_PROFILE, gson.toJson(user));
-            Intent next = new Intent(getApplicationContext(), MassagesScreen.class);
+            Intent next = new Intent(getApplicationContext(), GroupScreen.class);
             startActivity(next);
             finish();
         }

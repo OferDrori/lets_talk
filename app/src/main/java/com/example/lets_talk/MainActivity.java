@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference();
+
        // Log.d("pttt", "A - Number of users: " + users.size());
         Log.d("pttt", "A - Number of languageGroups: " + languageGroupsw.size());
         pass = findViewById(R.id.pass_main_editText);
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void usersReady(ArrayList<User> users) {
                 refreshListUsers(users);
-              //  Log.d("pttt", "C - Number of users: " + users.size());
+                //  Log.d("pttt", "C - Number of users: " + users.size());
 
 
             }
@@ -64,54 +65,55 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-        MyFirebase.getLanguageTalk(new CallBack_LanguageReady() {
-            @Override
-            public void languadeReady(ArrayList<LanguageGroups> languageGroups) {
-                refreshListOflanguage(languageGroups);
-//                Log.d("pttt", "C - Number of languageGroups: " + languageGroups.size());
 
-            }
-
-            @Override
-            public void error() {
-
-            }
-        });
+//        MyFirebase.getLanguageTalk(new CallBack_LanguageReady() {
+//            @Override
+//            public void languadeReady(ArrayList<LanguageGroups> languageGroups) {
+//                refreshListOflanguage(languageGroups);
+////                Log.d("pttt", "C - Number of languageGroups: " + languageGroups.size());
+//
+//            }
+//
+//            @Override
+//            public void error() {
+//
+//            }
+//        });
 //
 //        Log.d("pttt", "B - Number of users: " + users.size());
-        Log.d("pttt", "B - Number of users: " + languageGroupsw.size());
-
-        User temp = new User();
-        User user = new User("Gadi", "choen", "gadi", "Petah-Tikva", 2, "112233","student");
-        myRef.child("Users").child("Israel").child("" + user.getId()).setValue(user);
-
-
-        User user2 = new User("Tomer", "choen", "tomer@gmail.com", "Petah-Tikva", 3, "1122","student of math");
-        myRef.child("Users").child("Israel").child("" + user2.getId()).setValue(user2);
-        Message message = new Message();
-
-        message = new Message()
-                .setTimeStamp(System.currentTimeMillis())
-                .setStatus(0)
-                .setSender(user.getId())
-                .setReceiver(user2.getId())
-                .setContent("Hi Tomer4!");
-        ArrayList<Message> massagestemp=new ArrayList<>();
-        massagestemp.add(message);
-        massagestemp.add(message);
-        massagestemp.add(message);
-        massagestemp.add(message);
-        ArrayList<GruopOfMassages> gruopstemp =new ArrayList<>();
-        GruopOfMassages gruopOfMassages =new GruopOfMassages("the best",4, massagestemp);
-        gruopstemp.add(gruopOfMassages);
-        gruopstemp.add(gruopOfMassages);
-        gruopstemp.add(gruopOfMassages);
-        gruopstemp.add(gruopOfMassages);
-        LanguageGroups lantemp=new LanguageGroups( "ENGLISH", 1, 11, 4, gruopstemp);
-        myRef.child("language").child("ENGLISH").setValue(lantemp);
-        myRef.child("language").child("HEBREW").setValue(lantemp);
-
-        myRef.child("Chats").child(user.getId() + "-" + user2.getId()).push().setValue(message);
+//        Log.d("pttt", "B - Number of users: " + languageGroupsw.size());
+//
+//        User temp = new User();
+//        User user = new User("Gadi", "choen", "gadi", "Petah-Tikva", 2, "112233","student");
+//        myRef.child("Users").child("Israel").child("" + user.getId()).setValue(user);
+//
+//
+//        User user2 = new User("Tomer", "choen", "tomer@gmail.com", "Petah-Tikva", 3, "1122","student of math");
+//        myRef.child("Users").child("Israel").child("" + user2.getId()).setValue(user2);
+//        Message message = new Message();
+//
+//        message = new Message()
+//                .setTimeStamp(System.currentTimeMillis())
+//                .setStatus(0)
+//                .setSender(user.getId())
+//                .setReceiver(user2.getId())
+//                .setContent("Hi Tomer4!");
+//        ArrayList<Message> massagestemp=new ArrayList<>();
+//        massagestemp.add(message);
+//        massagestemp.add(message);
+//        massagestemp.add(message);
+//        massagestemp.add(message);
+//        ArrayList<GruopOfMassages> gruopstemp =new ArrayList<>();
+//        GruopOfMassages gruopOfMassages =new GruopOfMassages("the best",4, massagestemp);
+//        gruopstemp.add(gruopOfMassages);
+//        gruopstemp.add(gruopOfMassages);
+//        gruopstemp.add(gruopOfMassages);
+//        gruopstemp.add(gruopOfMassages);
+//        LanguageGroups lantemp=new LanguageGroups( "ENGLISH", 1, 11, 4, gruopstemp);
+//        myRef.child("language").child("ENGLISH").setValue(lantemp);
+//        myRef.child("language").child("HEBREW").setValue(lantemp);
+//
+//        myRef.child("Chats").child(user.getId() + "-" + user2.getId()).push().setValue(message);
 
     }
 
@@ -126,18 +128,18 @@ public class MainActivity extends AppCompatActivity {
         }
         // TODO: 12/01/2020 do refresh List
     }
-    private void refreshListOflanguage(ArrayList<LanguageGroups> languageGroups) {
-        languageGroupstemp.clear();
-        for (LanguageGroups var : languageGroups) {
-            languageGroupstemp.add(var);
-            Log.d("pttt", var.getLanguage());
-            Log.d("pttt", var.getGruopOfMassages().get(0).getName());
-
-        }
-        Gson gson=new Gson();
-        msp.putString(KEY_LANGUAGE_ALL,gson.toJson(languageGroupstemp));
-
-    }
+//    private void refreshListOflanguage(ArrayList<LanguageGroups> languageGroups) {
+//        languageGroupstemp.clear();
+//        for (LanguageGroups var : languageGroups) {
+//            languageGroupstemp.add(var);
+//            Log.d("pttt", var.getLanguage());
+//            Log.d("pttt", var.getGruopOfMassages().get(0).getName());
+//
+//        }
+//        Gson gson=new Gson();
+//        msp.putString(KEY_LANGUAGE_ALL,gson.toJson(languageGroupstemp));
+//
+//    }
 
 
     View.OnClickListener goToRegisterActivity = new View.OnClickListener() {

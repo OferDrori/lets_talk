@@ -11,7 +11,7 @@
         android:id="@+id/layoutLinear"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/download"
+        android:background="@drawable/backgroun"
         android:orientation="vertical">
 
         <TextView
@@ -112,6 +112,7 @@
             android:layout_marginRight="50dp"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
+            android:background="@drawable/ic_corner"
             android:text="Continue"
             android:textColor="#ffffff"
             android:textStyle="bold" />

@@ -14,8 +14,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -46,6 +49,7 @@ public class GroupScreen extends AppCompatActivity {
     ArrayList<LanguageGroups> languageGroups=new ArrayList<>();
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -67,23 +71,46 @@ public class GroupScreen extends AppCompatActivity {
         languageGroups = gson.fromJson(msp.getString(KEY_LANGUAGE_ALL, ""), new TypeToken<ArrayList<LanguageGroups>>() {
         }.getType());
 //        Log.d("pttt", languageGroups.get(0).getLanguage());
-        makeGroupList();
+        //makeGroupList();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 Toast.makeText(getApplicationContext(), "Hello "+i, Toast.LENGTH_LONG).show();
-                msp.putString(arrayListOfGruops.get(i).getName(),KEY_GROUP_NAME);
+                msp.putString(KEY_GROUP_NAME,arrayListOfGruops.get(i).getName());
                 Intent intent = new Intent(GroupScreen.this, MassagesScreen.class);
                 startActivity(intent);
                 finish();
-//
-//                Player player= (Player) adapterView.getAdapter().getItem(i);
-//                LatLng latLng= new LatLng(player.getlatitude(),player.getLongitude());
-//                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,10));
             }
         });
+
+
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference tripsRef = rootRef.child("language").child(languageName).child(level+"");
+        tripsRef.addListenerForSingleValueEvent(valueEventListener);
+
+
+
     }
+
+    ValueEventListener valueEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            ArrayList<GruopOfMassages> list = new ArrayList<>();
+            for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                GruopOfMassages arrival = ds.getValue(GruopOfMassages.class);
+                Log.d("pttt", "B - Number of mesages " + arrival.getName());
+                list.add(arrival);
+            }
+            refreshListOfMessages(list);
+
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {}
+    };
+
+
 
     private void makeGroupList() {
         for (int i = 0; i < languageGroups.size(); i++) {
@@ -128,12 +155,25 @@ public class GroupScreen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if(!groupName.getText().toString().equals("")) {
-                arrayListOfGruops.add(new GruopOfMassages(groupName.getText().toString(),5));
-                myRef.child("language").child(languageName).setValue(arrayListOfGruops);
+                GruopOfMassages temp= new GruopOfMassages(groupName.getText().toString(),5);
+                arrayListOfGruops.add(temp);
+                myRef.child("language").child(languageName).child(level+"").child(temp.getName()).setValue(temp);
                 listView.setAdapter(adapter);
 
             }
 
         }
     };
+
+    void refreshListOfMessages(ArrayList<GruopOfMassages> messages) {
+
+        for (GruopOfMassages var : messages) {
+            arrayListOfGruops.add(var);
+            Log.d("pttt", "B - Number of mesages " + var.getName());
+//            Log.d("pttt", "B - Number of users: " + var.getEmail());
+//            Log.d("pttt", "B - Number of users: " + var.getPassword());
+            listView.setAdapter(adapter);
+        }
+    }
+
 }
