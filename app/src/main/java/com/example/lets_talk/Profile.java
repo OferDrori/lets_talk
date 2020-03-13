@@ -27,12 +27,7 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         msp=new MySharedPreferences(this);
-
-        fullName=findViewById(R.id.fullName_textView_profile);
-        location=findViewById(R.id.location_textView_profile);
-        score=findViewById(R.id.score_textView_profile);
-        description=findViewById(R.id.description_textView_profile);
-        back=findViewById(R.id.back_profile_imageView);
+        findView();
         back.setOnClickListener(goToMassagesScreen);
 
         Gson gson = new Gson();
@@ -47,6 +42,16 @@ public class Profile extends AppCompatActivity {
 
 
     }
+
+    private void findView() {
+
+        fullName=findViewById(R.id.fullName_textView_profile);
+        location=findViewById(R.id.location_textView_profile);
+        score=findViewById(R.id.score_textView_profile);
+        description=findViewById(R.id.description_textView_profile);
+        back=findViewById(R.id.back_profile_imageView);
+    }
+
     View.OnClickListener goToMassagesScreen = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

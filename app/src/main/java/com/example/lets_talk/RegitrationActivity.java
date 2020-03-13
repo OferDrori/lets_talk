@@ -39,6 +39,12 @@ public class RegitrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regitration);
+        findView();
+        create.setOnClickListener(makeAuser);
+        msp=new MySharedPreferences(this);
+    }
+
+    private void findView() {
         create = findViewById(R.id.create_btn_activity_regitration);
         firstName=findViewById(R.id.firstName_edittext_registration_activity);
         lastName=findViewById(R.id.lastName_edittext_registration_activity);
@@ -46,9 +52,8 @@ public class RegitrationActivity extends AppCompatActivity {
         location=findViewById(R.id.location_edit_text_registration_activity);
         password=findViewById(R.id.editText_password_activity_regitration);
         description=findViewById(R.id.editText_description_activity_regitration);
-        create.setOnClickListener(makeAuser);
-        msp=new MySharedPreferences(this);
     }
+
     View.OnClickListener makeAuser = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

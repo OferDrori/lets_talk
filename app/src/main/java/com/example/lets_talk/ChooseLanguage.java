@@ -30,21 +30,17 @@ public class ChooseLanguage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_language);
-        btnStart = findViewById(R.id.chooseLanguage_btn_start);
-        menu_RDG_lunguge = findViewById(R.id.chooseLanguage_RDG_language);
-        menu_RDG_level = findViewById(R.id.menu_RDG_level);
-        btnStart.setOnClickListener(continueToGroupScreen);
-        msp=new MySharedPreferences(this);
-        menu_RDG_lunguge.check(R.id.chooseLanguage_RDB_hebrew);
-        menu_RDG_level.check(R.id.chooseLanguage_RDB_beginners);
-        exsit=findViewById(R.id.exsit);
-        exsit.setOnClickListener(goBack);
+        findViews();
 
+        exsit.setOnClickListener(goBack);
+        btnStart.setOnClickListener(continueToGroupScreen);
 
         //RadioGruou listener
         menu_RDG_lunguge.setOnCheckedChangeListener(lungugeConfiguration);
         menu_RDG_level.setOnCheckedChangeListener(levelConfiguration);
     }
+
+
 
     RadioGroup.OnCheckedChangeListener lungugeConfiguration = new RadioGroup.OnCheckedChangeListener() {
         @Override
@@ -92,7 +88,7 @@ public class ChooseLanguage extends AppCompatActivity {
                 msp.putInt(KEY_LEVEL, level);
                 Intent next = new Intent(getApplicationContext(), GroupScreen.class);
                 startActivity(next);
-                finish();
+
             }
         }
     };
@@ -100,12 +96,21 @@ public class ChooseLanguage extends AppCompatActivity {
         @Override
         public void onClick(View v) {
 
-                finish();
+
             }
 
     };
 
 
+    private void findViews() {
+        btnStart = findViewById(R.id.chooseLanguage_btn_start);
+        menu_RDG_lunguge = findViewById(R.id.chooseLanguage_RDG_language);
+        menu_RDG_level = findViewById(R.id.menu_RDG_level);
 
+        msp=new MySharedPreferences(this);
+        menu_RDG_lunguge.check(R.id.chooseLanguage_RDB_hebrew);
+        menu_RDG_level.check(R.id.chooseLanguage_RDB_beginners);
+        exsit=findViewById(R.id.exsit);
+    }
     }
 

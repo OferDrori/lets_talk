@@ -40,34 +40,7 @@ class MyFirebase {
         });
     }
 
-    public static void getLanguageTalk(final CallBack_LanguageReady callBack_LanguageReady) {
-        final ArrayList<LanguageGroups> languageGroups2 = new ArrayList<>();
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("language");
 
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot == null)
-                    callBack_LanguageReady.error();
-
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    LanguageGroups languageGroup = ds.getValue(LanguageGroups.class);
-                    languageGroups2.add(languageGroup);
-                }
-
-
-                callBack_LanguageReady.languadeReady(languageGroups2);
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                callBack_LanguageReady.error();
-            }
-        });
-    }
 
 
 
