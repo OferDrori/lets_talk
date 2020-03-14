@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -39,6 +41,8 @@ public class RegitrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regitration);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         findView();
         create.setOnClickListener(makeAuser);
         msp=new MySharedPreferences(this);
@@ -62,7 +66,7 @@ public class RegitrationActivity extends AppCompatActivity {
             myRef.child("Users").child("Israel").child("" + user.getId()).setValue(user);
             Gson gson = new Gson();
             msp.putString(KEY_USER_PROFILE, gson.toJson(user));
-            Intent next = new Intent(getApplicationContext(), GroupScreen.class);
+            Intent next = new Intent(getApplicationContext(), ChooseLanguages.class);
             startActivity(next);
             finish();
         }

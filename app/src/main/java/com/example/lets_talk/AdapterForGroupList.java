@@ -33,7 +33,7 @@ public class AdapterForGroupList extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = LayoutInflater.from(context).inflate(R.layout.row, parent, false);
-        content = convertView.findViewById(R.id.massage_text_view);
+        content = convertView.findViewById(R.id.message_text_view);
         name = convertView.findViewById(R.id.name_text_view);
         content.setText(" " + arrayList.get(position).getName());
         name.setText(" " +arrayList.get(position).getSize());

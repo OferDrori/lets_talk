@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#F8F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:layout_marginTop="25dp">
+
+        <TextView
+            android:id="@+id/welcome_txt_massages_screen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="Welcome"
+            android:textSize="30dp"
+            android:fontFamily="Roboto"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/info_txt_massages_screen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="What language you\n want to improve?"
+            android:textSize="20dp"
+            android:fontFamily="Roboto"
+            android:textColor="#000000"
+            android:textStyle="normal"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginBottom="100dp"
+            >
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/chooseLanguages_btn_hebrew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Hebrew"
+                android:background="@drawable/button_style"
+                />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="15dp">
+
+            </FrameLayout>
+            <Button
+                android:id="@+id/chooseLanguages_btn_english"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="English"
+                android:background="@drawable/button_style"
+
+                />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="15dp">
+
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/chooseLanguages_btn_france"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="France"
+                android:background="@drawable/button_style"
+                />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:srcCompat="@drawable/children" />
+    </RelativeLayout>
+
+</RelativeLayout>

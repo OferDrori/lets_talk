@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         findViews();
         msp=new MySharedPreferences(this);
@@ -92,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
-    View.OnClickListener goToMassegesScreen = new View.OnClickListener() {
+    View.OnClickListener goToChooseLanguagesScreen = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             if (checkUser()) {
@@ -101,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
-                Intent intent = new Intent(MainActivity.this, ChooseLanguage.class);
+                Intent intent = new Intent(MainActivity.this, ChooseLanguages.class);
                 startActivity(intent);
             } else {
                 Context context = getApplicationContext();
@@ -134,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         userName = findViewById(R.id.name_main_editText);
         register = findViewById(R.id.joinActivity_main_activity_text_view);
         login = findViewById(R.id.login_btn);
-        login.setOnClickListener(goToMassegesScreen);
+        login.setOnClickListener(goToChooseLanguagesScreen);
         register.setOnClickListener(goToRegisterActivity);
 
     }

@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,8 +54,8 @@ public class GroupScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_group_screen);
         flag=findViewById(R.id.flag_img_groupScreen);
         groupName=findViewById(R.id.groupName_edit_text_groupScreen);
@@ -70,8 +72,6 @@ public class GroupScreen extends AppCompatActivity {
         Gson gson = new Gson();
         languageGroups = gson.fromJson(msp.getString(KEY_LANGUAGE_ALL, ""), new TypeToken<ArrayList<LanguageGroups>>() {
         }.getType());
-//        Log.d("pttt", languageGroups.get(0).getLanguage());
-        //makeGroupList();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -80,7 +80,7 @@ public class GroupScreen extends AppCompatActivity {
                 msp.putString(KEY_GROUP_NAME,arrayListOfGruops.get(i).getName());
                 Intent intent = new Intent(GroupScreen.this, MassagesScreen.class);
                 startActivity(intent);
-                finish();
+
             }
         });
 
@@ -159,6 +159,7 @@ public class GroupScreen extends AppCompatActivity {
                 arrayListOfGruops.add(temp);
                 myRef.child("language").child(languageName).child(level+"").child(temp.getName()).setValue(temp);
                 listView.setAdapter(adapter);
+                groupName.setText("");
 
             }
 
@@ -169,9 +170,6 @@ public class GroupScreen extends AppCompatActivity {
 
         for (GruopOfMassages var : messages) {
             arrayListOfGruops.add(var);
-            Log.d("pttt", "B - Number of mesages " + var.getName());
-//            Log.d("pttt", "B - Number of users: " + var.getEmail());
-//            Log.d("pttt", "B - Number of users: " + var.getPassword());
             listView.setAdapter(adapter);
         }
     }

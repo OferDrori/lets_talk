@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -56,6 +58,7 @@ public class MassagesScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_massages_screen);
         findViews();
         myMassageAdapter = new MyAdapterForMyMassages(this, arrayList);
@@ -143,12 +146,13 @@ public class MassagesScreen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if(!massage.getText().toString().equals("")) {
-//                listView.setTranscriptMode(ListView.TRANSCRIPT_MODE_ALWAYS_SCROLL);
+
                 Message temp=new Message(System.currentTimeMillis(), massage.getText().toString(),user.getId(), 22, 1, user.getFirstName());
                 arrayList.add(temp);
                 saveMassageOnFirebace(temp);
               // listView.setAdapter(myMassageAdapter);
                 listView.setAdapter(thierMassageAdapter);
+                massage.setText("");
             }
 
         }
