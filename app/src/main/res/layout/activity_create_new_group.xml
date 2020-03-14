@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#F8F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16px">
+
+        <TextView
+            android:id="@+id/createNewGroup_welcome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="Create New Group"
+            android:textSize="30dp"
+            android:fontFamily="Roboto"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:id="@+id/createNewGroup_img_flag"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/israel_flag"
+                android:shape="ring"
+                android:layout_marginLeft="100dp"
+                ></ImageView>
+            <TextView
+                android:id="@+id/createNewGroup_Language_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:text="Hebrew"
+                android:textSize="20dp"
+                android:fontFamily="Roboto"
+                android:textColor="#000000"
+                android:textStyle="normal"
+                />
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/createNewGroup_level_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="Level 1"
+            android:textSize="20dp"
+            android:fontFamily="Roboto"
+            android:textColor="#000000"
+            android:textStyle="normal"
+            />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+            </FrameLayout>
+
+            <EditText
+
+                android:id="@+id/createNewGroup_GroupName_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Group Name" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp">
+
+            </FrameLayout>
+            <EditText
+
+                android:id="@+id/createNewGroup_GroupInfo_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="What do you want to speak about?" />
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+            </FrameLayout>
+                <Button
+                    android:id="@+id/createNewGroup_btn_create"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Create"
+                    android:textStyle="bold"
+                    android:fontFamily="Roboto"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:layout_marginLeft="50dp"
+                    android:background="@drawable/ic_cornern_new"
+                    android:textSize="20dp"
+                    ></Button>
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

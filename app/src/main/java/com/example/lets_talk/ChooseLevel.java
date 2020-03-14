@@ -38,7 +38,7 @@ public class ChooseLevel extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             msp.putInt(KEY_LEVEL, BEGINING_LEVEL);
-            Intent next = new Intent(getApplicationContext(), GroupScreen.class);
+            Intent next = new Intent(getApplicationContext(), GroupsScreen.class);
             startActivity(next);
             finish();
 
@@ -49,7 +49,7 @@ public class ChooseLevel extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             msp.putInt(KEY_LEVEL, ADVANCED_LEVEL);
-            Intent next = new Intent(getApplicationContext(), GroupScreen.class);
+            Intent next = new Intent(getApplicationContext(), GroupsScreen.class);
             startActivity(next);
             finish();
 
@@ -60,7 +60,7 @@ public class ChooseLevel extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             msp.putInt(KEY_LEVEL, MEDIUM_LEVEL);
-            Intent next = new Intent(getApplicationContext(), GroupScreen.class);
+            Intent next = new Intent(getApplicationContext(), GroupsScreen.class);
             startActivity(next);
             finish();
 
