@@ -42,7 +42,7 @@
             android:shadowColor="#000000"
             android:textColorHint="#000000"
             android:inputType="textPersonName"
-            android:hint="Login" />
+            android:hint="Email" />
 
         <EditText
             android:id="@+id/pass_main_editText"
@@ -87,6 +87,18 @@
             android:textColor="#000000"
 
             android:text="Join now" />
+
+        <TextView
+            android:id="@+id/main_textView_timeCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:paddingTop="10dp"
+            android:gravity="center"
+            android:visibility="invisible"
+
+
+            />
 
     </LinearLayout>
 </RelativeLayout>

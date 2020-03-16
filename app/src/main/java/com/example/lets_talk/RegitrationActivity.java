@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -22,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.lets_talk.Keys.KEY_USER_PROFILE;
+import static com.example.lets_talk.Keys.connectedName;
 
 public class RegitrationActivity extends AppCompatActivity {
     private Button create;
@@ -33,6 +36,7 @@ public class RegitrationActivity extends AppCompatActivity {
     private EditText description;
     private User user;
     private Gson gson;
+    private TextView info;
     private static long idCounter = 0;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
@@ -40,9 +44,8 @@ public class RegitrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_regitration);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         findView();
         create.setOnClickListener(makeAuser);
         msp=new MySharedPreferences(this);
@@ -56,23 +59,34 @@ public class RegitrationActivity extends AppCompatActivity {
         location=findViewById(R.id.location_edit_text_registration_activity);
         password=findViewById(R.id.editText_password_activity_regitration);
         description=findViewById(R.id.editText_description_activity_regitration);
+        info=findViewById(R.id.regitration_info_textView);
     }
 
     View.OnClickListener makeAuser = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            user=new User(firstName.getText().toString(),lastName.getText().toString(),email.getText().toString(),location.getText().toString(),createID(),password.getText().toString(),description.getText().toString());
 
-            myRef.child("Users").child("Israel").child("" + user.getId()).setValue(user);
-            Gson gson = new Gson();
-            msp.putString(KEY_USER_PROFILE, gson.toJson(user));
-            Intent next = new Intent(getApplicationContext(), ChooseLanguages.class);
-            startActivity(next);
-            finish();
+            if(isValidEmail(email.getText().toString())) {
+                user = new User(firstName.getText().toString(), lastName.getText().toString(), email.getText().toString(), location.getText().toString(), createID(), password.getText().toString(), description.getText().toString());
+                myRef.child("Users").child("Israel").push().setValue(user);
+                Gson gson = new Gson();
+                msp.putString(KEY_USER_PROFILE, gson.toJson(user));
+                Intent next = new Intent(getApplicationContext(), ChooseLanguages.class);
+                connectedName = user.getFirstName();
+                startActivity(next);
+                finish();
+            }
         }
     };
     public static long createID()
     {
         return idCounter++;
+    }
+
+    public boolean isValidEmail(CharSequence target) {
+        info.setVisibility(View.VISIBLE);
+        info.setText("Email is not valid");
+        return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
+
     }
 }

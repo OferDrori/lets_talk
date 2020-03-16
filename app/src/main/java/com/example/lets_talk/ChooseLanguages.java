@@ -37,7 +37,7 @@ public class ChooseLanguages extends AppCompatActivity {
                 msp.putString(KEY_LANGUAGE, ENGLISH);
                 Intent next = new Intent(getApplicationContext(), ChooseLevel.class);
                 startActivity(next);
-                finish();
+
 
             }
 

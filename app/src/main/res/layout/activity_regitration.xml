@@ -117,7 +117,15 @@
             android:textColor="#ffffff"
             android:textStyle="bold" />
 
-
+        <TextView
+            android:id="@+id/regitration_info_textView"
+            android:padding="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:visibility="invisible"
+            android:text="info"
+            android:textColor="#F50000"/>
 
 
     </LinearLayout>

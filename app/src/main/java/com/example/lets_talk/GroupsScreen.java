@@ -71,6 +71,7 @@ public class GroupsScreen extends AppCompatActivity {
                 msp.putString(KEY_GROUP_NAME,arrayListOfGruops.get(i).getName());
                 Intent intent = new Intent(GroupsScreen.this, MassagesScreen.class);
                 startActivity(intent);
+                finish();
 
             }
         });
@@ -102,6 +103,7 @@ public class GroupsScreen extends AppCompatActivity {
         public void onClick(View v) {
             Intent intent = new Intent(GroupsScreen.this, CreateNewGroup.class);
             startActivity(intent);
+            finish();
 
 
             }

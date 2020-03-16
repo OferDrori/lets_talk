@@ -14,7 +14,6 @@
         <activity android:name=".ChooseLevel" />
         <activity android:name=".ChooseLanguages" />
         <activity android:name=".Profile" />
-        <activity android:name=".GroupScreen" />
         <activity android:name=".MassagesScreen" />
         <activity android:name=".RegitrationActivity" />
         <activity android:name=".MainActivity">

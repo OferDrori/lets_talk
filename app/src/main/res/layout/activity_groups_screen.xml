@@ -98,6 +98,10 @@
                 android:id="@+id/listView_groupScreen"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:divider="@null"
+                android:dividerHeight="10dp"
                 android:stackFromBottom="true"/>
 
 

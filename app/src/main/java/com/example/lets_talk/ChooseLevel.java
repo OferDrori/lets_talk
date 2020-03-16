@@ -51,7 +51,7 @@ public class ChooseLevel extends AppCompatActivity {
             msp.putInt(KEY_LEVEL, ADVANCED_LEVEL);
             Intent next = new Intent(getApplicationContext(), GroupsScreen.class);
             startActivity(next);
-            finish();
+
 
         }
 

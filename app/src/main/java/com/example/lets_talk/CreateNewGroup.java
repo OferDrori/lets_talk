@@ -82,6 +82,7 @@ public class CreateNewGroup extends AppCompatActivity {
                 myRef.child("language").child(languageName).child(level+"").child(temp.getName()).setValue(temp);
                 Intent intent = new Intent(CreateNewGroup.this, GroupsScreen.class);
                 startActivity(intent);
+                finish();
             }
 
         }

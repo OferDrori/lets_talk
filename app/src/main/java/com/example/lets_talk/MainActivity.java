@@ -5,16 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.gson.Gson;
 import java.util.ArrayList;
-
 import static com.example.lets_talk.Keys.KEY_CONVERSATION_TOPIC;
 import static com.example.lets_talk.Keys.KEY_USER_PROFILE;
 import static com.example.lets_talk.Keys.connectedName;
@@ -22,6 +20,7 @@ import static com.example.lets_talk.Keys.connectedName;
 public class MainActivity extends AppCompatActivity {
     ArrayList<User> temp = new ArrayList<>();
     private TextView register;
+    private TextView timeCountTextView;
     private EditText pass;
     private EditText userName;
     private Button login;
@@ -33,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         findViews();
-        msp=new MySharedPreferences(this);
+        msp = new MySharedPreferences(this);
         msp.removeKey(KEY_USER_PROFILE);
-        ArrayList<ConversationTopic> conversationTopics=new ArrayList<>();
+        ArrayList<ConversationTopic> conversationTopics = new ArrayList<>();
         addTopics(conversationTopics);
-        Gson gson=new Gson();
-        msp.putString(KEY_CONVERSATION_TOPIC,gson.toJson(conversationTopics));
+        Gson gson = new Gson();
+        msp.putString(KEY_CONVERSATION_TOPIC, gson.toJson(conversationTopics));
         MyFirebase.getUsers(new CallBack_UsersReady() {
             @Override
             public void usersReady(ArrayList<User> users) {
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addTopics(ArrayList<ConversationTopic> conversationTopics) {
-        ConversationTopic topic=new ConversationTopic("science","global warming");
+        ConversationTopic topic = new ConversationTopic("science", "global warming");
         conversationTopics.add(topic);
         topic.setTopic("Animals");
         conversationTopics.add(topic);
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         topic.setTopic("Travels");
         conversationTopics.add(topic);
         topic.setSubject("World");
-        topic.setTopic("Afrika");
+        topic.setTopic("Africa");
         conversationTopics.add(topic);
 
     }
@@ -95,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
     View.OnClickListener goToChooseLanguagesScreen = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -112,35 +112,48 @@ public class MainActivity extends AppCompatActivity {
                 int duration = Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
+                login.setEnabled(false);
+                timeCountTextView.setVisibility(View.VISIBLE);
+                new CountDownTimer(5000, 1000) {
+                    public void onTick(long millisUntilFinished) {
+                        timeCountTextView.setText("seconds remaining: " + millisUntilFinished / 1000);
+                    }
 
+                    public void onFinish() {
+                        timeCountTextView.setText("done!");
+                        timeCountTextView.setVisibility(View.INVISIBLE);
+                        login.setEnabled(true);
+                    }
+                }.start();
             }
         }
     };
 
-    boolean checkUser() {
-        for (int i = 0; i < temp.size(); i++) {
-            if (temp.get(i).getEmail().equals(userName.getText().toString())&&temp.get(i).getPassword().equals(pass.getText().toString())) {
-                Gson gson = new Gson();
-                connectedName=temp.get(i).getFirstName();
-                msp.putString(KEY_USER_PROFILE, gson.toJson(temp.get(i)));
-                return true;
+            boolean checkUser () {
+                for (int i = 0; i < temp.size(); i++) {
+                    if (temp.get(i).getEmail().equals(userName.getText().toString()) && temp.get(i).getPassword().equals(pass.getText().toString())) {
+                        Gson gson = new Gson();
+                        connectedName = temp.get(i).getFirstName();
+                        msp.putString(KEY_USER_PROFILE, gson.toJson(temp.get(i)));
+                        return true;
+                    }
+
+                }
+                return false;
+
+            }
+
+
+            private void findViews () {
+                pass = findViewById(R.id.pass_main_editText);
+                userName = findViewById(R.id.name_main_editText);
+                register = findViewById(R.id.joinActivity_main_activity_text_view);
+                login = findViewById(R.id.login_btn);
+                timeCountTextView=findViewById(R.id.main_textView_timeCount);
+                login.setOnClickListener(goToChooseLanguagesScreen);
+                register.setOnClickListener(goToRegisterActivity);
+
             }
 
         }
-        return false;
-
-    }
-
-
-    private void findViews() {
-        pass = findViewById(R.id.pass_main_editText);
-        userName = findViewById(R.id.name_main_editText);
-        register = findViewById(R.id.joinActivity_main_activity_text_view);
-        login = findViewById(R.id.login_btn);
-        login.setOnClickListener(goToChooseLanguagesScreen);
-        register.setOnClickListener(goToRegisterActivity);
-
-    }
-
-}
 
