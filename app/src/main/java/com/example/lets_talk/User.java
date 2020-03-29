@@ -2,12 +2,11 @@ package com.example.lets_talk;
 
 public class User {
 
-    private String firstName;
-    private String LastName;
+    private String fullName;
     private String email;
     private long id;
     private String location;
-    private String img;
+    private String photoPath;
     private  int score;
     private String password;
     private String description;
@@ -23,12 +22,11 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "firstName='" + firstName + '\'' +
-                ", LastName='" + LastName + '\'' +
+                "firstName='" + fullName + '\'' +
                 ", email='" + email + '\'' +
                 ", id=" + id +
                 ", location='" + location + '\'' +
-                ", img='" + img + '\'' +
+                ", img='" + photoPath + '\'' +
                 ", score=" + score +
                 ", password='" + password + '\'' +
                 ", description='" + description + '\'' +
@@ -39,15 +37,15 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String LastName,String email,String location,long id,String password,String description) {
-        this.firstName = firstName;
-        this.LastName = LastName;
+    public User(String fullName,String email,String location,long id,String password,String description,String photoPath) {
+        this.fullName = fullName;
         this.email = email;
         this.location=location;
         this.id=id;
         this.password=password;
         this.description=description;
         this.score=0;
+        this.photoPath=photoPath;
     }
 
 
@@ -68,20 +66,12 @@ public class User {
         this.location = location;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getfullName() {
+        return fullName;
     }
 
-    public void setFirstName(String farstName) {
-        this.firstName = farstName;
-    }
-
-    public String getLastName() {
-        return LastName;
-    }
-
-    public void setLastName(String lastName) {
-        LastName = lastName;
+    public void setfullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getEmail() {
@@ -100,12 +90,12 @@ public class User {
         this.id = id;
     }
 
-    public String getImg() {
-        return img;
+    public String getPhotoPath() {
+        return photoPath;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setPhotoPath(String photoPath) {
+        this.photoPath = photoPath;
     }
 
     public int getScore() {

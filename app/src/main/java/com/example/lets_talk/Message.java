@@ -9,6 +9,7 @@ public class Message {
     private long receiver;
     private int status = 0;
     private String senderName;
+    private String photoPath;
 
     public String getSenderName() {
         return senderName;
@@ -18,13 +19,22 @@ public class Message {
         this.senderName = senderName;
     }
 
-    public Message(long timeStamp, String content, long sender, long receiver, int status, String senderName) {
+    public Message(long timeStamp, String content, long sender, long receiver, int status, String senderName,String photoPath) {
         this.timeStamp = timeStamp;
         this.content = content;
         this.sender = sender;
         this.receiver = receiver;
         this.status = status;
         this.senderName = senderName;
+        this.photoPath=photoPath;
+    }
+
+    public String getPhotoPath() {
+        return photoPath;
+    }
+
+    public void setPhotoPath(String photoPath) {
+        this.photoPath = photoPath;
     }
 
     public Message() {

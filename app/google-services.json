@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "501067371523-mmvoqbg0mgprnhai9k7tr8iuo6ca6v9n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lets_talk",
+            "certificate_hash": "7f3493f21c16519c1888be92b6a699c7a644ac2b"
+          }
+        },
+        {
           "client_id": "501067371523-7n47jihs1p8rif7gjtc2hru6qr3sci5q.apps.googleusercontent.com",
           "client_type": 3
         }

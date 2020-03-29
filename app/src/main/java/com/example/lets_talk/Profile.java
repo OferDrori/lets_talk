@@ -34,7 +34,7 @@ public class Profile extends AppCompatActivity {
          user= gson.fromJson(msp.getString(KEY_USER_PROFILE, ""), new TypeToken<User>() {
        }.getType());
          Log.d("pppt",user.toString());
-        fullName.setText("name:"+user.getFirstName()+" "+user.getLastName());
+        fullName.setText("name:"+user.getfullName()+" ");
         location.setText("location: "+user.getLocation());
         score.setText("score: "+user.getScore());
         description.setText(user.getDescription());

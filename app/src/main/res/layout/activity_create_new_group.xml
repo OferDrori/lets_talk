@@ -85,26 +85,19 @@
             </FrameLayout>
 
             <EditText
-
                 android:id="@+id/createNewGroup_GroupName_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:layout_margin="35dp"
                 android:inputType="textPersonName"
                 android:hint="Group Name" />
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="25dp">
-
-            </FrameLayout>
             <EditText
-
                 android:id="@+id/createNewGroup_GroupInfo_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
                 android:inputType="textPersonName"
+                android:layout_margin="35dp"
                 android:hint="What do you want to speak about?" />
 
 
@@ -112,20 +105,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp">
             </FrameLayout>
-                <Button
-                    android:id="@+id/createNewGroup_btn_create"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Create"
-                    android:textStyle="bold"
-                    android:fontFamily="Roboto"
-                    android:textColor="#FFFFFF"
-                    android:gravity="center"
-                    android:layout_marginLeft="50dp"
-                    android:background="@drawable/ic_cornern_new"
-                    android:textSize="20dp"
-                    ></Button>
 
+            <Button
+                android:id="@+id/createNewGroup_btn_create"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_cornern_new"
+                android:fontFamily="Roboto"
+                android:gravity="center"
+                android:layout_marginRight="35dp"
+                android:layout_marginLeft="35dp"
+                android:text="Create"
+                android:textColor="#FFFFFF"
+                android:textSize="20dp"
+                android:textStyle="bold"></Button>
 
 
         </LinearLayout>

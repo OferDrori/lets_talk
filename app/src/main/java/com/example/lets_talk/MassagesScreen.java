@@ -3,6 +3,7 @@ package com.example.lets_talk;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -15,6 +16,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
@@ -40,6 +42,7 @@ public class MassagesScreen extends AppCompatActivity {
     private String groupName;
     private String languageName;
     private String level;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,7 +104,7 @@ public class MassagesScreen extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             if(!massageEditText.getText().toString().equals("")) {
-                Message temp=new Message(System.currentTimeMillis(), massageEditText.getText().toString(),user.getId(), 22, 1, user.getFirstName());
+                Message temp=new Message(System.currentTimeMillis(), massageEditText.getText().toString(),user.getId(), 22, 1, user.getfullName(),user.getPhotoPath());
                 saveMassageOnFirebace(temp);
                 massageEditText.setText("");
             }

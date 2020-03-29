@@ -36,9 +36,9 @@
                 android:id="@+id/groupsScreen_flag"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
-             android:background="@drawable/israel_flag"
-                android:shape="ring"
-              android:layout_marginLeft="70dp"
+                android:background="@drawable/israel_flag"
+                android:shape="oval"
+                android:layout_marginLeft="70dp"
                 ></ImageView>
 
         <TextView
@@ -78,7 +78,7 @@
             android:fontFamily="Roboto"
             android:gravity="center"
             android:lineSpacingExtra="10sp"
-            android:text="Create a new group"
+            android:text="+ Create a new group"
             android:textColor="#0030FF"
             android:textSize="20dp" />
 
