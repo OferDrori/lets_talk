@@ -61,20 +61,18 @@ public class MyAdapterForMassages extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         filePath = Uri.fromFile(new File("images/"));
         Message message = arrayList.get(position);
-        if (message.getSenderName().equals(connectedName)) {
+        if (message.getSenderName().equals(connectedName)) {//if its message from me
             convertView = LayoutInflater.from(context).inflate(R.layout.my_message, parent, false);
             content = convertView.findViewById(R.id.message_body);
             content.setText(" " + arrayList.get(position).getContent());
             // name.setText(arrayList.get(position).getSenderName());
             return convertView;
         }
-        else {
+        else {//if its message from others
             convertView = LayoutInflater.from(context).inflate(R.layout.their_message, parent, false);
             content = convertView.findViewById(R.id.message_body);
             name = convertView.findViewById(R.id.name_text_view);
             imgprofile = convertView.findViewById(R.id.avatar);
-
-
 
             content.setText(" " + arrayList.get(position).getContent());
             name.setText(arrayList.get(position).getSenderName());
